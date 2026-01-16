@@ -33,7 +33,7 @@ body{
 .topbar{
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 50;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -150,7 +150,7 @@ h1{
   color: rgba(15,23,42,.78);
 }
 
-.heroActions{margin-top:10px;display:flex;gap:10px}
+.heroActions{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
 
 /* Buttons */
 .btnPrimary{
@@ -394,6 +394,10 @@ h1{
   cursor:pointer;
   background: rgba(255,255,255,0.9);
   transition: transform .08s ease, border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  justify-content:space-between;
 }
 .choice:hover{
   transform: translateY(-1px);
@@ -414,13 +418,6 @@ h1{
   background: rgba(15,23,42,.05);
   border: 1px solid rgba(15,23,42,.06);
   color: rgba(15,23,42,.78);
-}
-
-.choice{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  justify-content:space-between;
 }
 
 .choice.selected{
@@ -462,4 +459,97 @@ h1{
   .heroArt{max-width: 100%}
   .choices{grid-template-columns:1fr}
   .navPill{display:none}
+}
+
+/* hero mock should never steal clicks */
+.heroArt, .mockCard, .mockBody { pointer-events: none; }
+
+/* =========================
+   ✅ FLOWISE CLICK + LAYER FIX (BOTTOM)
+   ========================= */
+
+/* Your UI stays normal */
+.topbar, .wrap, .hero, .heroLeft, .card{
+  position: relative;
+  z-index: 10;
+}
+
+/* Flowise injects elements with these class names often */
+.flowise-chatbot,
+.flowise-chatbot-container,
+.flowise-chatbot-window,
+.flowise-chatbot-button{
+  pointer-events: auto !important;
+  z-index: 999999 !important;
+}
+
+/* Safety: if Flowise uses a fixed/floating wrapper */
+.flowise-chatbot-button,
+.flowise-chatbot-window{
+  position: fixed !important;
+}
+
+/* Make sure your buttons stay clickable too */
+#startSetupBtn, #startChatBtn, #jumpChatBtn{
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* =========================
+   ✅ SETUP PASTE BOX (NEW)
+   ========================= */
+
+.setupPasteBox{
+  display:none;
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.18);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+  max-width: 560px;
+}
+
+.spbTitle{
+  font-weight: 900;
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.spbSub{
+  font-weight: 650;
+  color: rgba(15,23,42,0.78);
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.spbCode{
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(15,23,42,0.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.spbActions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:10px;
+}
+
+.spbBtn{
+  border: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 900;
+  background: rgba(15,23,42,0.06);
+}
+.spbBtn:hover{
+  background: rgba(37,99,235,0.10);
 }
