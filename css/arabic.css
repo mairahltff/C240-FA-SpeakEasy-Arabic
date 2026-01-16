@@ -44,12 +44,19 @@ body{
 }
 
 .brand{
-  justify-self: start;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
+
+.brandLogo{
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 10px; /* optional: soft rounded corners */
+}
+
 
 .logoMark{
   width:30px;height:30px;display:grid;place-items:center;
