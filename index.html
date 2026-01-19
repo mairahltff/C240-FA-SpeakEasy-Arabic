@@ -1,12 +1,122 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=arabic.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpeakEasy</title>
-  </head>
-  <body>
-    Redirecting… <a href="arabic.html">Click here</a>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakEasy • Arabic</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/arabic.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img src="images/logo.jpeg" alt="SpeakEasy logo" class="brandLogo">
+      <div class="brandText">
+        <span class="brandName">SpeakEasy</span>
+        <span class="brandTag">AI Coach</span>
+      </div>
+    </a>
+
+    <nav class="navPill">
+      <a class="navLink active">Home</a>
+      <a class="navLink">Courses</a>
+      <a class="navLink">About</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroLeft">
+        <div class="badge">Arabic • AI Chat Coach</div>
+
+        <h1>Practice Arabic the fast,<br>friendly way.</h1>
+
+        <p class="sub">
+          Pick a goal, choose your level, and learn Arabic with an AI tutor.
+        </p>
+
+        <div class="heroActions">
+          <button class="btnPrimary" id="startSetupBtn">Get Started</button>
+          <button class="btnSecondary" id="startChatBtn">Start Chat</button>
+          <button class="btnGhost" id="jumpChatBtn">Try Chat</button>
+        </div>
+      </div>
+
+      <!-- HERO MOCK CHAT -->
+      <div class="heroArt">
+        <div class="mockCard">
+          <div class="mockTop">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <div class="mockBody" dir="rtl">
+            <div class="msg">مَرْحَبًا</div>
+            <div class="msg">كَيْفَ حَالُكَ؟</div>
+            <div class="msg">أَنَا أَتَعَلَّمُ الْعَرَبِيَّةَ</div>
+
+            <div class="typingPill">
+              <span class="typingDot"></span>
+              <span class="typingDot"></span>
+              <span class="typingDot"></span>
+            </div>
+          </div>
+
+          <div class="mockHint">
+            Tip: reply in Arabic, we’ll correct gently.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETUP CARD -->
+    <section class="card" id="setupCard">
+      <h2>Set up your Arabic chat</h2>
+
+      <div class="stepper">
+        <div class="step active" id="step1">1 Goal</div>
+        <div class="step" id="step2">2 Level</div>
+        <div class="step" id="step3">3 Style</div>
+      </div>
+
+      <div class="progressWrap">
+        <div class="progressBar" id="progressBar"></div>
+      </div>
+
+      <h3 id="qTitle"></h3>
+      <p id="qHint"></p>
+
+      <div class="choices" id="choices"></div>
+
+      <div class="footerRow">
+        <button class="backBtn" id="backBtn">Back</button>
+        <button class="nextBtn" id="nextBtn">Continue</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOWISE -->
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "2a85dfa3-0b0d-41cd-bc58-09985d758998",
+        apiHost: "https://cloud.flowiseai.com",
+    })
+</script>
+
+  <!-- APP JS -->
+  <script src="./js/arabic.js"></script>
+
+</body>
 </html>
